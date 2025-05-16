@@ -1,11 +1,13 @@
 ---
+import BaseLayout from "./BaseLayout.astro";
 const { frontmatter } = Astro.props;
 const pubDate = new Date(frontmatter.pubDate);
 ---
 
-<meta charset="utf-8" />
-<h1>{frontmatter.title}</h1>
-<p>Written by {frontmatter.author}</p>
-Published on: {pubDate.toLocaleDateString()}
-<hr />
-<slot />
+<BaseLayout pageTitle={frontmatter.title}>
+  <p>Written by {frontmatter.author}</p>
+  Published on: {pubDate.toLocaleDateString()}
+  <hr />
+  <slot />
+  <a href="../blog" class="text-blue-500">&lt&lt Back to blogs</a>
+</BaseLayout>
